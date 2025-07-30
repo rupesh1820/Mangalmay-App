@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WebName = () => {
+const WebSiteName = () => {
   return (
     <div className='fixed w-full bg-white'>
 
@@ -11,4 +11,4 @@ const WebName = () => {
   )
 }
 
-export default WebName;
+export default WebSiteName;
