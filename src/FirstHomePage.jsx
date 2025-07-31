@@ -5,9 +5,11 @@ import LeftNavbar from '../Components/LeftNavbar'
 import DailySandhyaPage from '../Pages/DailySandhyaPage'
 import DownNavbar from '../Components/DownNavbar'
 import LiveVideoPage from '../Pages/LiveVideoPage'
+import LiveAudioPage from '../Pages/LiveAudioPage';
+import HomePage from '../Pages/HomePage';
 
 
-const HomePage = () => {
+const FirstHomePage = () => {
 
     const [Page, SetPage] = useState("/Home");
 
@@ -19,8 +21,8 @@ const HomePage = () => {
           <LeftNavbar SetPage={SetPage}></LeftNavbar>
         </div>
         <div>
-           {Page === "/Home" && <p>Home</p>}
-           {Page === "/LiveAudio" && <p>Home</p>}
+           {Page === "/Home" && <HomePage/>}
+           {Page === "/LiveAudio" && <LiveAudioPage/>}
            {Page === "/LiveVideo" && <LiveVideoPage/>}
            {Page === "/DailySandhya" && <DailySandhyaPage/>}
          
@@ -34,4 +36,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default FirstHomePage

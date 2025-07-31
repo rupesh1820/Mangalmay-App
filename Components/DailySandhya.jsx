@@ -12,11 +12,14 @@ const DailySandhyaPage = () => {
 
   const getBgColor = (letter) => {
     const colors = {
-      Y: 'bg-blue-600',
+      S: 'bg-blue-600',
+      Y: 'bg-green-500',
       E: 'bg-red-500',
-      N: 'bg-lime-500',
-      M: 'bg-orange-400',
-      G: 'bg-sky-400',
+      N: 'bg-lime-600',
+      M: 'bg-orange-500',
+      G: 'bg-pink-500',
+      D: 'bg-purple-500',
+      H: 'bg-emerald-500',
     };
     return colors[letter] || 'bg-gray-400';
   };
@@ -79,12 +82,12 @@ const DailySandhyaPage = () => {
   ];
 
   return (
-    <div className="w-full xl:w-220 xl:ml-  min-h-screen sm:ml-12 mt-25 md:ml-30 bg-white">
-      <h1 className="text-xl sm:text-2xl font-bold text-center text-cyan-600 py-4 border-b">
+    <div className="w-full min-h-screen bg-white py-4 mt-30 sm:ml-2 px-2 sm:px-4 md:px-6 lg:px-8 md:pl-80 lg:pl-[100px]">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-cyan-600 mb-4">
         Daily Sandhya
       </h1>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-3">
         {Sandhya.map((item, index) => {
           const initial = getInitial(item.Name);
           const bgColor = getBgColor(initial);
@@ -92,35 +95,37 @@ const DailySandhyaPage = () => {
           return (
             <div
               key={index}
-              className="w-full flex items-center justify-between px-4 py-3 border-b"
+              className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 py-3 border rounded-lg shadow-md bg-white"
             >
-              <div className="flex items-center gap-4 w-[75%]">
+              {/* Left Side */}
+              <div className="flex items-start sm:items-center gap-4 w-full sm:w-[75%]">
                 <div
-                  className={`w-10 h-10 rounded-full text-white flex items-center justify-center text-lg font-bold ${bgColor}`}
+                  className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full text-white flex items-center justify-center text-base sm:text-lg font-bold ${bgColor}`}
                 >
                   {initial}
                 </div>
-                <div className="text-sm">
-                  <p className="font-semibold text-black leading-tight">{item.Name}</p>
-                  <p className="text-gray-600">{item.date}</p>
-                  <p className="text-gray-600">{item.size} MB</p>
+                <div className="text-sm sm:text-base overflow-hidden">
+                  <p className="font-semibold text-black leading-tight truncate max-w-[250px] sm:max-w-full">
+                    {item.Name}
+                  </p>
+                  <p className="text-gray-600 text-xs sm:text-sm">{item.date}</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">{item.size} MB</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                {/* Download Icon (left side) */}
+              {/* Right Side */}
+              <div className="flex items-center gap-2 mt-2 sm:mt-0">
                 <a
                   href={item.url}
                   download
-                  className="text-xs md:text-lg p-2 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-800"
+                  className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 shadow-sm text-sm sm:text-base"
                 >
                   <FaDownload />
                 </a>
 
-                {/* Play / Pause Icon (right side) */}
                 <button
                   onClick={() => handleToggle(index)}
-                  className="text-xs md:text-lg p-2 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-800"
+                  className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 shadow-sm text-sm sm:text-base"
                 >
                   {playingIndex === index ? <FaPause /> : <FaPlay />}
                 </button>

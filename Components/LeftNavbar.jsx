@@ -6,7 +6,7 @@ import { GiMeditation } from "react-icons/gi";
 
 const LeftNavbar = ({ SetPage }) => {
   return (
-    <div className='shadow-2xl h-240 mt-10 sm:w-80 lg:w-100 fixed'>
+    <div className='shadow-2xl  h-240 mt-10 sm:w-60  fixed'>
       <ul className='my-12 mx-2'>
 
         <a href="#" onClick={(e) => { e.preventDefault(); SetPage("/Home"); }}>
